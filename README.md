@@ -39,7 +39,7 @@ Please see [contributing.md](contributing.md) for details and a todolist.
 
 ## Security
 
-If you discover any security related issues, please email beau@7lab.nl instead of using the issue tracker.
+If you discover any security related issues, please email info@7lab.nl instead of using the issue tracker.
 
 ## Credits
 
