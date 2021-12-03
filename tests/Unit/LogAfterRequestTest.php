@@ -30,13 +30,40 @@ class LogAfterRequestTest extends TestCase
         $this->get('/');
     }
 
-    public function test_the_middleware_can_be_disabled(): void
+    public function test_the_middleware_can_be_disabled_by_config(): void
     {
         $this->mock(LogAfterRequest::class)
             ->shouldNotReceive('handle');
 
-        config(['laravel-defaults.log-after-request' => false]);
+        config([
+            'log_after_request' => [
+                'enabled' => false,
+            ],
+        ]);
 
         $this->get('/');
+    }
+
+    public function test_the_middleware_can_be_disabled_by_env(): void
+    {
+        $this->mock(LogAfterRequest::class)
+            ->shouldNotReceive('handle');
+
+        config([
+            'log_after_request' => [
+                'enabled' => true,
+            ],
+        ]);
+
+        putenv('LOG_AFTER_REQUEST_ENABLED=false');
+
+        $this->get('/');
+    }
+
+    protected function getEnvironmentSetUp($app)
+    {
+        $app['config']->set('log_after_request', [
+            'enabled' => true,
+        ]);
     }
 }

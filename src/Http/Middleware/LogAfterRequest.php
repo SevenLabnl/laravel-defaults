@@ -42,19 +42,13 @@ class LogAfterRequest
                 'headers' => $request->header(),
             ];
 
-            if (config('logging.debug')) {
+            if (config('laravel-defaults.log_after_request.debug')) {
                 $requestLog['data'] = $request->except('password', 'password_confirmation');
-                // $requestLog['data'] = $request->getContent(); // Log everything
             }
 
-            // Response
             $responseLog = [
                 'status' => $response->getStatusCode(),
             ];
-
-            if (config('logging.debug')) {
-                $responseLog['data'] = $response->getContent();
-            }
 
             Log::info('LogAfterRequest', [
                 'userID' => $userID,

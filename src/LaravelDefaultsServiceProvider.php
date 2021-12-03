@@ -17,7 +17,7 @@ class LaravelDefaultsServiceProvider extends ServiceProvider
     public function boot(Kernel $kernel): void
     {
 //        Add the LogAfterRequest middleware to the kernel, to be sure it will be used at every request
-        if (config('laravel-defaults.log_after_request')) {
+        if (config('laravel-defaults.log_after_request.enabled')) {
             $kernel->pushMiddleware(LogAfterRequest::class);
         }
 
