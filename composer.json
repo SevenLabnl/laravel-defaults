@@ -1,0 +1,46 @@
+{
+    "name": "sevenlab/laravel-defaults",
+    "description": ":package_description",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Beau van Rouwendal",
+            "email": "beau@7lab.nl",
+            "homepage": "https://www.7lab.nl",
+            "role": "Developer"
+        }
+    ],
+    "homepage": "https://github.com/sevenlab/laravel-defaults",
+    "keywords": ["Laravel", "LaravelDefaults", "7lab"],
+    "require": {
+        "illuminate/support": "~7|~8"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5",
+        "orchestra/testbench": "^6.23",
+        "nunomaduro/collision": "^5.10"
+    },
+    "autoload": {
+        "psr-4": {
+            "SevenLab\\LaravelDefaults\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SevenLab\\LaravelDefaults\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "SevenLab\\LaravelDefaults\\LaravelDefaultsServiceProvider"
+            ],
+            "aliases": {
+                "LaravelDefaults": "SevenLab\\LaravelDefaults\\Facades\\LaravelDefaults"
+            }
+        }
+    },
+    "scripts": {
+        "test": "./vendor/bin/testbench package:test"
+    }
+}

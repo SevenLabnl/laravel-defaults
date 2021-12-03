@@ -15,7 +15,13 @@ Via Composer
 $ composer require sevenlab/laravel-defaults
 ```
 
+After installation, you can publish the config file to your application's config directory.
+```bash
+$ php artisan vendor:publish --provider="SevenLab\LaravelDefaults\LaravelDefaultsServiceProvider"
+```
+
 ## Usage
+By default every request will be logged. This can be disabled by setting the `log_after_request` config value to `false`.
 
 ## Change log
 
@@ -33,11 +39,11 @@ Please see [contributing.md](contributing.md) for details and a todolist.
 
 ## Security
 
-If you discover any security related issues, please email author@email.com instead of using the issue tracker.
+If you discover any security related issues, please email beau@7lab.nl instead of using the issue tracker.
 
 ## Credits
 
-- [Author Name][link-author]
+- [Beau van Rouwendal][link-author]
 - [All Contributors][link-contributors]
 
 ## License
