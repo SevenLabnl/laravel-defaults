@@ -4,6 +4,7 @@ namespace SevenLab\LaravelDefaults;
 
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Support\ServiceProvider;
+use SevenLab\LaravelDefaults\Console\Stubs\AuthStubCommand;
 use SevenLab\LaravelDefaults\Http\Middleware\LogAfterRequest;
 
 class LaravelDefaultsServiceProvider extends ServiceProvider
@@ -58,5 +59,10 @@ class LaravelDefaultsServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../config/laravel-defaults.php' => config_path('laravel-defaults.php'),
         ], 'laravel-defaults.config');
+
+        // Register package commands.
+        $this->commands([
+            AuthStubCommand::class,
+        ]);
     }
 }
