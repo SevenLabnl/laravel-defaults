@@ -16,6 +16,8 @@ class LogAfterRequest
         'horizon/*',
         'telescope/*',
         'vendor/*',
+        // Custom
+        'health',
     ];
 
     /**
@@ -33,9 +35,6 @@ class LogAfterRequest
     public function terminate($request, $response)
     {
         if ($this->inExceptArray($request) === false) {
-            $userID = auth()->id();
-
-            // Request
             $requestLog = [
                 'method' => $request->method(),
                 'url' => $request->fullUrl(),
@@ -51,7 +50,8 @@ class LogAfterRequest
             ];
 
             Log::info('LogAfterRequest', [
-                'userID' => $userID,
+                'appName' => config('app.name', '?'),
+                'userID' => auth()->id(),
                 'requestLog' => $requestLog,
                 'responseLog' => $responseLog,
             ]);
